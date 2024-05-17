@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="Initialize football_team table" author="yauhenih">
+        <sql>
+            create table if not exists football_team
+            (
+                id                 int unsigned auto_increment,
+                name               varchar(25) not null,
+                city               varchar(15) not null,
+                date_of_foundation date        not null,
+                budget             int         not null,
+                primary key (id)
+            ) engine=innodb default charset=utf8;
+        </sql>
+        <rollback>
+            <sql>
+                drop table if exists player;
+                drop table if exists football_team;
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="Initialize player table" author="yauhenih">
+        <sql>
+            create table if not exists player
+            (
+                id               int unsigned auto_increment,
+                name             varchar(25) not null,
+                surname          varchar(25) not null,
+                age              int         not null,
+                football_team_id int unsigned not null,
+                primary key (id),
+                foreign key (football_team_id) references football_team (id)
+            ) engine=innodb default charset=utf8;
+        </sql>
+        <rollback>
+            <sql>
+                drop table if exists player;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

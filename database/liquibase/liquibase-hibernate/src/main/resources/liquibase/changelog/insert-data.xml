@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="Insert data into company table" author="yauhenih">
+        <sql>
+            insert into company (id, name, country, address)
+            values (1, "EPAM", "Belarus", "Kuprevicha street 1");
+        </sql>
+        <rollback>
+            <sql>
+                delete from company where id = 1;
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="Insert data into employee table" author="yauhenih">
+        <sql>
+            insert into employee (id, name, surname, company_id)
+            values (1, "Petya", "Petrov", 1),
+                   (2, "Vasya", "Ivanov", 1);
+        </sql>
+        <rollback>
+            <sql>
+                delete from employee where id in (1, 2);
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

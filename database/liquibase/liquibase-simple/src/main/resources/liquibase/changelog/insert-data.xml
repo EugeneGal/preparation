@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="Insert data into football_team table" author="yauhenih">
+        <sql>
+            insert into football_team (id, name, city, date_of_foundation, budget)
+            values (1, "FC Barcelona", "Barcelona", '1899-12-31', 1000000000);
+        </sql>
+        <rollback>
+            <sql>
+                delete from football_team where id = 1;
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="Insert data into player table" author="yauhenih">
+        <sql>
+            insert into player (id, name, surname, age, football_team_id)
+            values (1, "Lionel", "Messi", 36, 1),
+                   (2, "Robert", "Lewandowski", 35, 1);
+        </sql>
+        <rollback>
+            <sql>
+                delete from player where id in (1, 2);
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
