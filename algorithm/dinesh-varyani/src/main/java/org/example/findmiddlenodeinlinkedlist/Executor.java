@@ -40,34 +40,4 @@ public class Executor {
         return slow;
     }
 
-
-
-
-
-
-    private static Node removeNode(Node head, int position) {
-
-
-        if (position == 1) {
-            return head.getNext();
-        }
-
-        int i = 1;
-        Node current = head;
-        Node previous = head;
-
-        while (current != null) {
-            if (i == position) {
-                previous.setNext(current.getNext());
-                break;
-            }
-
-            previous = current;
-            current = current.getNext();
-            i++;
-        }
-
-        return head;
-    }
-
 }
