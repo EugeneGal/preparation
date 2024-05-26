@@ -17,6 +17,7 @@
         <module>hibernate</module>
         <module>liquibase</module>
         <module>spring-jdbc-template</module>
+        <module>spring-data-jpa</module>
     </modules>
 
 </project>
