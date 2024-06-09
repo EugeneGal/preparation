@@ -19,6 +19,7 @@
         <module>spring-jdbc-template</module>
         <module>spring-data-jpa</module>
         <module>mongo</module>
+        <module>mongo/mongo-spring-data</module>
     </modules>
 
 </project>

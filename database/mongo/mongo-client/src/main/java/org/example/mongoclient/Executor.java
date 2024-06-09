@@ -1,4 +1,4 @@
-package org.example.mongo;
+package org.example.mongoclient;
 
 import java.util.Map;
 import java.util.stream.Collectors;
