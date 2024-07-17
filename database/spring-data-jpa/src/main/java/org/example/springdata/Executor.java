@@ -4,6 +4,7 @@ import java.util.List;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.springdata.configuration.Config;
 import org.example.springdata.entity.Company;
 import org.example.springdata.entity.Employee;
 import org.example.springdata.repository.CompanyRepository;
@@ -31,8 +32,13 @@ public class Executor implements CommandLineRunner {
 
     private final EmployeeRepository employeeRepository;
 
-    // docker pull mysql
-    // docker run -p 3306:3306 --name custom-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=demo_db -d mysql
+    /**
+     * Mysql container is started via {@link Config}.
+     *
+     * Or you can start it manually:
+     * docker pull mysql
+     * docker run -p 3306:3306 --name custom-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=demo_db -d mysql
+     */
     public static void main(String[] args) {
         SpringApplication.run(Executor.class, args);
     }
