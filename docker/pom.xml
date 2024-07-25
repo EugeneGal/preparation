@@ -5,17 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.example</groupId>
-        <artifactId>algorithm</artifactId>
+        <artifactId>preparation</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>math-tasks</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>common</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>docker</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dockerfile</module>
+    </modules>
 
 </project>
