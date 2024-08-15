@@ -1,0 +1,24 @@
+First part of this article was taken for info:
+https://medium.com/@wiraizkandar/kafka-producer-consumer-in-local-docker-with-go-02759d20fde6
+
+1) Inside the folder 'kafka-zookeeper-docker-compose' in terminal:
+docker compose up -d
+
+2) Go into kafka container:
+docker exec -it kafka-server /bin/bash
+
+3) Create topic:
+kafka-topics.sh --create --topic my-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+4) Show topics:
+kafka-topics.sh --list --bootstrap-server localhost:9092
+
+5) Send messages to topic in already opened terminal:
+kafka-console-producer.sh --topic my-topic --bootstrap-server localhost:9092
+6) After running the above command, you can type messages into the console, and each line will be sent as a record to my-topic topic. Press Ctrl+C to exit the producer.
+
+7) Open another terminal window to consume records:
+docker exec -it kafka-server /bin/bash
+
+kafka-console-consumer.sh --topic my-topic --bootstrap-server localhost:9092 --from-beginning
+8) Now when you write any message in producer terminal window, this message will be displayed in consumer terminal window.

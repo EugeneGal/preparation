@@ -1,4 +1,4 @@
-package org.example.petyaandvasyagame;
+package org.example.mathtasks.petyaandvasya;
 
 import java.util.Arrays;
 import java.util.HashSet;
