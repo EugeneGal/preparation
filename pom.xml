@@ -23,6 +23,7 @@
         <module>other</module>
         <module>docker</module>
         <module>kafka</module>
+        <module>algorithm/leetcode</module>
     </modules>
 
     <properties>
