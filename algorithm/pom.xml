@@ -15,6 +15,7 @@
     <modules>
         <module>dinesh-varyani</module>
         <module>math-tasks</module>
+        <module>leetcode</module>
     </modules>
 
 </project>
