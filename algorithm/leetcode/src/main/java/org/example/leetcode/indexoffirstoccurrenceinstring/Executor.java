@@ -7,17 +7,6 @@ import java.util.concurrent.ExecutionException;
  */
 public class Executor {
 
-    private static void hello() {
-        synchronized (Executor.class) {
-
-        }
-
-    }
-
-    public static class MyClass {
-        volatile int counter;
-    }
-
     public static void main(String[] args) throws InterruptedException, ExecutionException {
 //        int position = strStrMySolution("footballer", "ball");
         int position = strStrMySolution("mississippi", "issip");
