@@ -1,14 +1,11 @@
 package org.example.leetcode.longestcommonprefix;
 
-import java.util.Arrays;
-
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Arrays;
 
 /**
  * https://leetcode.com/problems/longest-common-prefix
- *
- * @author Yauheni Halaidzin
- * @since 28.01.2025
  */
 @Slf4j
 public class Executor {
