@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Executor {
 
     public static void main(String[] args) {
-        String[] array = {"flower","flow","flight"};
+        String[] array = {"flower", "flow", "flight"};
 //        String[] array = {"abc","ab","a"};
 
         String longestCommonPrefix = longestCommonPrefixBest(array);
