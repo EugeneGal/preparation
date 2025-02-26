@@ -36,6 +36,15 @@ public class MoneyServiceTest {
     }
 
     @Test
+    void shouldThrowExceptionWhenAmountForExtractingLessZero() {
+        AccountOperations accountOperations = new InMemoryAccountOperations();
+        Account account = accountOperations.createAccount("Mike", 100);
+        MoneyService moneyService = new MoneyService(accountOperations);
+
+        assertThrows(IllegalArgumentException.class, () -> moneyService.extractMoney(account.getId(), -100));
+    }
+
+    @Test
     void shouldThrowExceptionWhenExtractingMoneyFromInsufficientBalance() {
         AccountOperations AccountOperations = new InMemoryAccountOperations();
         Account account = AccountOperations.createAccount("Mike", 100);
@@ -78,7 +87,7 @@ public class MoneyServiceTest {
 
         CountDownLatch startLatch = new CountDownLatch(1);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        ExecutorService executorService = Executors.newFixedThreadPool(50);
 
         Runnable task = () -> {
             try {

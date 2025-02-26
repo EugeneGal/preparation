@@ -17,11 +17,19 @@ public class MoneyService {
     }
 
     public void extractMoney(int accountId, int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be less than 0");
+        }
+
         Account account = accountOperations.getAccount(accountId);
         account.extractFromBalance(amount);
     }
 
     public void transferMoney(int fromAccountId, int toAccountId, int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be less than 0 while transferring money");
+        }
+
         Account accountFrom = accountOperations.getAccount(fromAccountId);
         Account accountTo = accountOperations.getAccount(toAccountId);
 

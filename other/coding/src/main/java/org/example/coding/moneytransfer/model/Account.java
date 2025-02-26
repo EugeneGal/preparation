@@ -36,6 +36,10 @@ public class Account {
     }
 
     public void extractFromBalance(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be less than 0");
+        }
+
         while (true) {
             int currentBalance = balance.get();
             if (currentBalance < amount) {
