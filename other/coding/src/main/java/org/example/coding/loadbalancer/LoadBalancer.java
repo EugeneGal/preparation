@@ -3,7 +3,7 @@ package org.example.coding.loadbalancer;
 import org.example.coding.loadbalancer.model.Server;
 import org.example.coding.loadbalancer.pickstrategy.ServerPickStrategy;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,17 +28,12 @@ public class LoadBalancer {
             return false;
         }
 
-        synchronized (this) {
-            if (urlToServerMap.containsKey(server.getUrl())) {
-                return false;
+        return urlToServerMap.compute(server.getUrl(), (key, existing) -> {
+            if (existing == null && urlToServerMap.size() <= MAX_CAPACITY) {
+                return server;
             }
-
-            if (urlToServerMap.size() >= MAX_CAPACITY) {
-                return false;
-            }
-
-            return urlToServerMap.putIfAbsent(server.getUrl(), server) == null;
-        }
+            return existing;
+        }) == server;
     }
 
     public Optional<Server> getServer() {
@@ -46,7 +41,7 @@ public class LoadBalancer {
             return Optional.empty();
         }
 
-        return pickStrategy.pick(new ArrayList<>(urlToServerMap.values()));
+        return pickStrategy.pick(List.copyOf(urlToServerMap.values()));
     }
 
     public boolean removeServer(Server server) {

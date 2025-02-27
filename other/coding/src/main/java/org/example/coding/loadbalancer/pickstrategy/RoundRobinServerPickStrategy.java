@@ -16,7 +16,8 @@ public class RoundRobinServerPickStrategy implements ServerPickStrategy {
             return Optional.empty();
         }
 
-        int index = counter.getAndIncrement() % servers.size();
+        int size = servers.size();
+        int index = counter.getAndIncrement() % size;
         return Optional.of(servers.get(index));
     }
 
