@@ -1,14 +1,14 @@
 package org.example.jdbc;
 
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * JDBC executor.
@@ -27,7 +27,7 @@ public class JdbcExecutor {
 
         Class.forName("org.postgresql.Driver");
 
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/db", "user", "password");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://0.0.0.0:5432/db", "user", "password");
 
         Statement statement = connection.createStatement();
 
@@ -37,7 +37,7 @@ public class JdbcExecutor {
             create table student 
             (
                 id integer generated always as identity,
-                name varchar(256) not null ,
+                name varchar(256) not null,
                 group_number integer not null,
                 PRIMARY KEY (id)
             )

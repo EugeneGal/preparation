@@ -23,6 +23,7 @@ public class LoadBalancer {
         this.pickStrategy = pickStrategy;
     }
 
+    // TODO: need to throw exception instead of returning boolean
     public boolean registerServer(Server server) {
         if (server == null) {
             return false;
