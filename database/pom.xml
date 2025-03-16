@@ -21,6 +21,7 @@
         <module>mongo</module>
         <module>mongo/mongo-spring-data</module>
         <module>mongo/mongo-template</module>
+        <module>locking</module>
     </modules>
 
 </project>
