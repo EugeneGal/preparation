@@ -15,7 +15,7 @@ insert into money values (1, 1000, 1);
 insert into money values (2, 200, 1);
 5) In terminal begin transaction (T1) with update of first account:
 begin;
-update money set balance=balance+100, version=version+1 where id=1 and version=1;
+update money set balance=balance-100, version=version+1 where id=1 and version=1;
 6) Run code, you will see that you are hanging on extracting money from first account
 7) Commit T1 in terminal:
 commit;
